@@ -1,0 +1,7 @@
+[YarraModule]
+Name=PatchCharacterSet
+Description=Patches the character set tag of the reconstructed DICOMs. Necessary for special characters in different languages.
+Version=0.1a
+Author=Tobias Block
+Homepage=yarra.rocks
+RequiresMatlab=false
