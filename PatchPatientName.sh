@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CSET="ISO_IR 192"
+CSET="ISO_IR 100"
 VERS="0.1b"
 
 echo ""
@@ -40,13 +40,13 @@ ModuleDir="$0"
 ModuleDir="$(dirname $ModuleDir)"
 
 if [ ! -f "$ModuleDir/GetSeqParams" ]; then
-    echo "ERROR: GetSeqParams tool does not exist $3"
+    echo "ERROR: GetSeqParams tool does not exist in $ModuleDir"
     echo ""
     exit 1;
 fi
 
-# Get patient name from TWIX file
-PatName=$($ModuleDir/GetSeqParams $3 show PatientName)
+# Get patient name from TWIX file and convert to Latin1
+PatName=$($ModuleDir/GetSeqParams $3 show PatientName | iconv -f UTF-8 -t ISO_8859-1)
 
 if [ $? -eq 0 ]; then
     echo "Using name '$PatName'" 
